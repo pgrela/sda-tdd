@@ -48,6 +48,14 @@
             <version>3.13.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- TODO(MOCKITO_FIRST) add a dependency to mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 </project>
