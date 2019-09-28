@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<span th:if="${displayWelcomeText}">
+    <h3 th:text="${welcomeText}"></h3>
+    <h3 th:text="'Nice to see you, ' + ${greeting.name} + ' from ' + ${greeting.city}"></h3>
+</span>
+<h4>This is how you list items:</h4>
+<ul>
+    <li th:each="item: ${items}" th:text="${item}"></li>
+</ul>
+<h4>This is how you do forms:</h4>
+<form action="/" method="post">
+    <div class="form-group">
+        <label for="name">Name </label>
+        <input class="form-control" type="text" name="name" id="name"/>
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input class="form-control" type="text" name="city" id="city"/>
+    </div>
+    <input type="submit" name="submit" value="Submit"/>
+</form>
+</body>
+</html>

@@ -12,7 +12,7 @@
     <artifactId>basics</artifactId>
 
     <properties>
-        <junit5.version>5.5.2</junit5.version>
+        <junit5.version>5.3.2</junit5.version>
     </properties>
 
     <dependencies>
@@ -26,12 +26,6 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit5.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <version>1.5.2</version>
             <scope>test</scope>
         </dependency>
         <!-- TODO(FIRST_PARAMETERIZED) add a dependency to use junit-jupiter-params -->
@@ -51,11 +45,16 @@
         <!-- TODO(MOCKITO_FIRST) add a dependency to mockito -->
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
+            <artifactId>mockito-core</artifactId>
+            <version>3.0.0</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 </project>
