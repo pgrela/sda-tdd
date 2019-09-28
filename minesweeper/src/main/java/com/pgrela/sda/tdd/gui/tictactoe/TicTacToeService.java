@@ -17,7 +17,7 @@ public class TicTacToeService {
     }
 
     public void processCommand(String key, String value) {
-        logger.info("Executing command '{}' with value '{}'", key, value);
+        logger.info("Executing command '{}' with value '{}'.", key, value);
     }
 
     public Board getBoardView() {
