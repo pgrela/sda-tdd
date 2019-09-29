@@ -1,6 +1,7 @@
 package com.pgrela.sda.tdd.gui.tictactoe;
 
 import com.pgrela.sda.tdd.gui.games.model.Board;
+import com.pgrela.sda.tdd.gui.tictactoe.domain.Tile;
 import com.pgrela.sda.tdd.gui.tictactoe.repository.TicTacToeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,7 @@ public class TicTacToeService {
     private final Logger logger = LoggerFactory.getLogger(TicTacToeService.class);
 
     private TicTacToeRepository ticTacToeRepository;
-    private Board board = new Board();
+
 
     public TicTacToeService(TicTacToeRepository ticTacToeRepository) {
         this.ticTacToeRepository = ticTacToeRepository;
@@ -25,11 +26,28 @@ public class TicTacToeService {
             int x = Integer.parseInt(key.substring(6, 7));
             int y = Integer.parseInt(key.substring(9, 10));
             logger.info("Go click at {} {}", x, y);
-            board.getBoard()[x][y]="O";
+            Tile[][] board = ticTacToeRepository.read();
+            board[x][y] = Tile.CIRCLE;
+            ticTacToeRepository.save(board);
         }
     }
 
     public Board getBoardView() {
-        return board;
+        Tile[][] board = ticTacToeRepository.read();
+        Board boardView = new Board();
+        boardView.setBoard(transform(board));
+        return boardView;
+    }
+
+    private String[][] transform(Tile[][] board) {
+        String[][] strings =
+                new String[board.length][board[0].length];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                strings[i][j] =
+                        board[i][j].getPresentation();
+            }
+        }
+        return strings;
     }
 }
