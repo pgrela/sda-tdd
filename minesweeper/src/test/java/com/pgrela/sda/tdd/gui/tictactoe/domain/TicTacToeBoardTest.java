@@ -3,6 +3,11 @@ package com.pgrela.sda.tdd.gui.tictactoe.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
+import static org.assertj.core.api.Assertions.*;
+
 class TicTacToeBoardTest {
     @Test
     void shouldReturnBlankTileFromNewBoard() {
@@ -15,7 +20,7 @@ class TicTacToeBoardTest {
         Tile tile = ticTacToeBoard.getTile(row, column);
 
         // then
-        Assertions.assertThat(tile).isEqualTo(Tile.BLANK);
+        assertThat(tile).isEqualTo(Tile.BLANK);
     }
 
     @Test
@@ -29,8 +34,8 @@ class TicTacToeBoardTest {
         ticTacToeBoard.makeMove(Tile.CIRCLE, row, column);
 
         // then
-        Assertions.assertThat(ticTacToeBoard.getTile(row, column))
-                .isEqualTo(Tile.CIRCLE);
+        TicTacBoardAssertions.assertThat(ticTacToeBoard)
+                .hasCircleAt(row,column);
     }
 
     @Test
@@ -42,8 +47,22 @@ class TicTacToeBoardTest {
         ticTacToeBoard.makeMove(Tile.CIRCLE, row, column);
 
         // when + then
-        Assertions.assertThatThrownBy(
+        assertThatThrownBy(
                 () -> ticTacToeBoard.makeMove(Tile.CIRCLE, row, column))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void shouldBeEntirelyBlank() {
+        // given
+
+        // when
+        TicTacToeBoard ticTacToeBoard = new TicTacToeBoard();
+
+        // then
+        Tile[][] entireBoard = ticTacToeBoard.getEntireBoard();
+        assertThat(entireBoard)
+                .hasSize(3)
+                .containsOnly(new Tile[]{Tile.BLANK, Tile.BLANK, Tile.BLANK});
     }
 }

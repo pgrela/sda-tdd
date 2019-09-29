@@ -16,17 +16,17 @@ import java.util.Map.Entry;
 @Controller
 public class TicTacToeController {
 
-    private TicTacToeService ticTacToeService;
+    private AppLicationTicTacToeService appLicationTicTacToeService;
 
-    public TicTacToeController(TicTacToeService ticTacToeService) {
-        this.ticTacToeService = ticTacToeService;
+    public TicTacToeController(AppLicationTicTacToeService appLicationTicTacToeService) {
+        this.appLicationTicTacToeService = appLicationTicTacToeService;
     }
 
     @GetMapping()
     public ModelAndView tic() {
         return new ModelAndView("tictactoe",
                 Collections.singletonMap(
-                        "board", ticTacToeService.getBoardView()));
+                        "board", appLicationTicTacToeService.getBoardView()));
     }
 
     @PostMapping()
@@ -35,7 +35,7 @@ public class TicTacToeController {
             throw new IllegalArgumentException("Should be exactly one parameter!");
         }
         Entry<String, String> onlyEntry = allRequestParams.entrySet().iterator().next();
-        ticTacToeService.processCommand(onlyEntry.getKey(), onlyEntry.getValue());
+        appLicationTicTacToeService.processCommand(onlyEntry.getKey(), onlyEntry.getValue());
         return new RedirectView("/tictactoe");
     }
 }

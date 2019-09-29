@@ -9,12 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TicTacToeService {
-    private final Logger logger = LoggerFactory.getLogger(TicTacToeService.class);
+public class AppLicationTicTacToeService {
+    private final Logger logger = LoggerFactory.getLogger(AppLicationTicTacToeService.class);
 
     private TicTacToeRepository ticTacToeRepository;
 
-    public TicTacToeService(TicTacToeRepository ticTacToeRepository) {
+    public AppLicationTicTacToeService(TicTacToeRepository ticTacToeRepository) {
         this.ticTacToeRepository = ticTacToeRepository;
     }
 
