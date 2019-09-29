@@ -21,4 +21,11 @@ public class TicTacToeBoard {
     public Tile[][] getEntireBoard() {
         return internalTiles;
     }
+
+    public void makeMove(Tile tile, int row, int column) {
+        if(internalTiles[row][column]!=Tile.BLANK){
+            throw new IllegalArgumentException("Tile already filled.");
+        }
+        internalTiles[row][column] = tile;
+    }
 }

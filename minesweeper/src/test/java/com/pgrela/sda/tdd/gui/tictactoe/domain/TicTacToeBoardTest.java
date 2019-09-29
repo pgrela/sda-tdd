@@ -17,4 +17,33 @@ class TicTacToeBoardTest {
         // then
         Assertions.assertThat(tile).isEqualTo(Tile.BLANK);
     }
+
+    @Test
+    void shouldRememberMove() {
+        // given
+        TicTacToeBoard ticTacToeBoard = new TicTacToeBoard();
+        int row = 0;
+        int column = 0;
+
+        // when
+        ticTacToeBoard.makeMove(Tile.CIRCLE, row, column);
+
+        // then
+        Assertions.assertThat(ticTacToeBoard.getTile(row, column))
+                .isEqualTo(Tile.CIRCLE);
+    }
+
+    @Test
+    void shouldNotAllowDoubleMove() {
+        // given
+        TicTacToeBoard ticTacToeBoard = new TicTacToeBoard();
+        int row = 0;
+        int column = 0;
+        ticTacToeBoard.makeMove(Tile.CIRCLE, row, column);
+
+        // when + then
+        Assertions.assertThatThrownBy(
+                () -> ticTacToeBoard.makeMove(Tile.CIRCLE, row, column))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
