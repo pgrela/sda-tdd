@@ -1,37 +1,59 @@
 package com.pgrela.sda.tdd.words;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-// TODO(MOCKITO_ANNOTATIONS) add @ExtendWith(MockitoExtension.class)
+// TODO(MOCKITO_ANNOTATIONS) add
+@ExtendWith(MockitoExtension.class)
 class WordsServiceTest {
+
+    @Mock
+    WordsRepository wordsRepository;
+
+    @InjectMocks
+    WordsService wordsService;
+    private List<String> allWords = Collections.emptyList();
+
 
     // TODO(MOCKITO_ANNOTATIONS) add @BeforeEach put there common things and/or use @Mock and/or @InjectMocks
 
     // TODO(MOCKITO_FIRST) fix the test
+
+    @BeforeEach
+    void setupMocks() {
+        Mockito.when(wordsRepository.allWords()).thenAnswer(
+                (ignored) -> allWords
+        );
+    }
+
     @Test
     void shouldReturnOnlyNames() {
-        // TODO(MOCKITO_ANNOTATIONS) refactor this test
         // given
-        List<String> allWords = Arrays.asList("chair", "grass", "Valentine", "fork", "George");
-        WordsService wordsService = null;
+        allWords = Arrays.asList("chair", "grass", "Valentine", "fork", "George");
 
         // when
         List<String> names = wordsService.getOnlyNames();
 
         // then
-        Assertions.assertThat(names).containsOnly("Valentine", "George");
+        Assertions.assertThat(names)
+                .containsOnly("Valentine", "George");
     }
 
     @Test
     void shouldReturnOnlyWordsWithDash() {
-        // TODO(MOCKITO_ANNOTATIONS) refactor this test
         // given
-        List<String> allWords = Arrays.asList("biało-czerowny", "trawa", "ciemnoniebieski", "junit-5");
-        WordsService wordsService = null;
+        allWords = Arrays.asList("biało-czerowny", "trawa", "ciemnoniebieski", "junit-5");
 
         // when
         List<String> names = wordsService.getOnlyDashedWords();
@@ -44,11 +66,11 @@ class WordsServiceTest {
     @Test
     void shouldUpdateWordsBeforeReturningMostRecentOne() {
         // given
-        WordsService wordsService = null;
 
         // when
         wordsService.getMostRecentWord();
 
         // then
+        Mockito.verify(wordsRepository).getRecentlyAddedWords();
     }
 }
