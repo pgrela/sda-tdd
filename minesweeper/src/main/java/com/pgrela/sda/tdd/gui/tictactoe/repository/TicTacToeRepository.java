@@ -7,12 +7,7 @@ import java.util.Arrays;
 
 @Component
 public class TicTacToeRepository {
-    private Tile[][] tileBoard = new Tile[3][3];
-    {
-        for (int i = 0; i < 3; i++) {
-            Arrays.fill(tileBoard[i], Tile.BLANK);
-        }
-    }
+    private Tile[][] tileBoard;
 
     public void save(Tile[][] tileBoard){
         this.tileBoard = tileBoard;
