@@ -9,7 +9,7 @@ import java.util.List;
 // TODO(MOCKITO_ANNOTATIONS) add @ExtendWith(MockitoExtension.class)
 class WordsServiceTest {
 
-    // TODO(MOCKITO_ANNOTATIONS) add @BeforeEach put there common things
+    // TODO(MOCKITO_ANNOTATIONS) add @BeforeEach put there common things and/or use @Mock and/or @InjectMocks
 
     // TODO(MOCKITO_FIRST) fix the test
     @Test
