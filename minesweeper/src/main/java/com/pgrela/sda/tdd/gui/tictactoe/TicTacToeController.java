@@ -24,7 +24,9 @@ public class TicTacToeController {
 
     @GetMapping()
     public ModelAndView tic() {
-        return new ModelAndView("tictactoe", Collections.singletonMap("board", ticTacToeService.getBoardView()));
+        return new ModelAndView("tictactoe",
+                Collections.singletonMap(
+                        "board", ticTacToeService.getBoardView()));
     }
 
     @PostMapping()

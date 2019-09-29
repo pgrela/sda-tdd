@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Board {
     private String message = "Hello Player One!";
-    private String[][] board = new String[][]{{"", "", "X"}, {"", "", ""}, {"O", "", ""}};
+    private String[][] board = new String[][]{{"", "", ""}, {"", "", ""}, {"", "", ""}};
 
     public static final Board MINESWEEPER_DEMO;
 
