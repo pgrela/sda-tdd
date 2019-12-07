@@ -3,8 +3,13 @@ package com.pgrela.sda.tdd.calculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
@@ -19,6 +24,8 @@ class WeirdCalculatorTest {
     }
 
     // TODO(FIRST_PARAMETERIZED) use @ParameterizedTest and @ValueSource to test many numbers
+    @ParameterizedTest
+    @ValueSource(ints={-22,0,2,4})
     void shouldDetectEvenNumbers(int number) {
         Assertions.assertTrue(weirdCalculator.isEven(number));
     }
@@ -32,12 +39,14 @@ class WeirdCalculatorTest {
     }
 
     // TODO(PARAMETERIZED_METHOD) use @MethodSource
+    @ParameterizedTest
+    @MethodSource
     void shouldComputeModulo4(int number) {
         Assertions.assertEquals(number % 4, weirdCalculator.modulo4(number));
     }
 
-    List<Integer> shouldComputeModulo4() {
+    IntStream shouldComputeModulo4() {
         // TODO(PARAMETERIZED_METHOD) generate numbers from 0 to 1000
-        return null;
+        return IntStream.rangeClosed(0,1000);
     }
 }
