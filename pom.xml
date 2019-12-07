@@ -10,9 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>basics</module>
-        <module>minesweeper</module>
         <module>basics-junit4</module>
-        <module>tdd-terrestrial</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
