@@ -20,6 +20,16 @@ class EchoTest {
         // TODO(ASSERTIONS) assert result
     }
 
+    @Test
+    void same(){
+        ArrayList<Object> pierwsza = new ArrayList<>();
+        pierwsza.add(1);
+        ArrayList<Object> druga = new ArrayList<>();
+        druga.add(1);
+        Assertions.assertEquals(pierwsza, druga);
+        Assertions.assertSame(pierwsza, pierwsza);
+    }
+
     /* TODO(ASSERTIONS) create test methods and use following Assertions:
         Assertions.assertTrue();
         Assertions.assertFalse();

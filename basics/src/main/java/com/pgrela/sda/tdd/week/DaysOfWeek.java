@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 public class DaysOfWeek {
     List<String> daysOfWeek() {
         return Arrays.stream(DayOfWeek.values())
-                .map(day -> day.getDisplayName(TextStyle.FULL, Locale.CHINA))
+                .map(day -> day.getDisplayName(TextStyle.FULL, new Locale("pl")))
+                //.map(lowerCaseDay -> lowerCaseDay.substring(0,1).toUpperCase()+lowerCaseDay.substring(1))
                 .collect(Collectors.toList());
     }
 }
