@@ -7,6 +7,11 @@ import java.util.stream.Collectors;
 public class Zoo {
     private List<Animal> animals = new ArrayList<>();
 
+    public Zoo() {
+        //addAnimal(new Animal("Flip", "", "fox", 7_000));
+        //addAnimal(new Animal("Flap", "", "fox", 5_000));
+    }
+
     List<Animal> showAnimals() {
         return new ArrayList<>(animals);
     }
@@ -15,7 +20,13 @@ public class Zoo {
         if (animals.contains(animal)) {
             throw new IllegalArgumentException(String.format("There already is %s in the zoo!", animal));
         }
-        animals.add(animal);
+        Animal newAnimal = new Animal(
+                animal.getName(),
+                animal.makeSound(),
+                animal.species(),
+                animal.weightInGrams()
+        );
+        animals.add(newAnimal);
     }
 
     void removeAnimal(Animal animal) {
