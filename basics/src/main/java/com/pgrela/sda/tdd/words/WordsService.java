@@ -1,5 +1,6 @@
 package com.pgrela.sda.tdd.words;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

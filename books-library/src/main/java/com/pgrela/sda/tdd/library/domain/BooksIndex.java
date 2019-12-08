@@ -13,7 +13,7 @@ class BooksIndex implements PublicBookIndex {
 
     @Override
     public Collection<Book> allBooks() {
-        return null;
+        return database.getAll();
     }
 
     @Override
@@ -22,7 +22,7 @@ class BooksIndex implements PublicBookIndex {
     }
 
     void addNew(Book book) {
-
+        database.save(book.getIsbn(), book);
     }
 
     void remove(Book book) {
