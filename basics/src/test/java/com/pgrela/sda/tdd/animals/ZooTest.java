@@ -30,9 +30,8 @@ class ZooTest {
         zoo.addAnimal(RAT_ROBERT);
 
         // then
-        AnimalAssertions animalAssertions =
-                AnimalAssertions.assertThat(zoo.showAnimals().get(0));
-        animalAssertions.hasName("Robert")
+        AnimalAssertions.assertThat(zoo.showAnimals().get(0))
+                .hasName("Robert")
                 .isSpecies("rat")
                 .makes("Piii")
                 .weightsGrams(300);
@@ -69,5 +68,17 @@ class ZooTest {
         assertThat(foxes)
                 .extracting("species")
                 .containsOnly("fox");
+    }
+
+    @Test
+    void shouldHaveFatSilentFoxes() {
+        // given
+        // ...
+
+        // when
+        //List<Animal> foxes = zoo.showAnimalsOfSpecies("fox");
+
+        // then
+        //AnimalAssertions.assertThat(foxes.get(0)).isSilentFatFox()
     }
 }

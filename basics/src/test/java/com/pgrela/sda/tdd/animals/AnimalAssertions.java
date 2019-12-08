@@ -38,6 +38,16 @@ class AnimalAssertions extends AbstractAssert<AnimalAssertions, Animal> {
         return this;
     }
 
+    public AnimalAssertions isSilentFatFox() {
+        Assertions.assertThat(actual.species())
+                .isEqualTo("fox");
+        Assertions.assertThat(actual.makeSound())
+                .isEqualTo("");
+        Assertions.assertThat(actual.weightInGrams())
+                .isGreaterThan(14_000);
+        return this;
+    }
+
 
     // TODO(ASSERTJ_CUSTOM) create static method: public static AnimalAssertions assertThat(Animal animal) {...}
 
