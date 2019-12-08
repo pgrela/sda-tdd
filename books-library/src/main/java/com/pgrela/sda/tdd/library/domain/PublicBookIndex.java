@@ -6,4 +6,6 @@ public interface PublicBookIndex {
     Collection<Book> allBooks();
 
     boolean isAvailable(Book book);
+
+    boolean canBeBorrowed(Book book);
 }

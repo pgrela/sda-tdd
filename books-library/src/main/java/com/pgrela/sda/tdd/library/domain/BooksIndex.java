@@ -18,14 +18,34 @@ class BooksIndex implements PublicBookIndex {
 
     @Override
     public boolean isAvailable(Book book) {
+        try {
+            return database.get(book.getIsbn()) != null;
+        } catch (IllegalStateException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean canBeBorrowed(Book book) {
+        if (!isAvailable(book)) {
+            return false;
+        }
         return false;
     }
+
+    public void borrow(Book book) {
+        if (!isAvailable(book)) {
+            throw new BookNotAvailableException(
+                    "Library does not own such book.");
+        }
+    }
+
 
     void addNew(Book book) {
         database.save(book.getIsbn(), book);
     }
 
     void remove(Book book) {
-
+        database.remove(book.getIsbn());
     }
 }
