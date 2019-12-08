@@ -12,6 +12,9 @@ public class Zoo {
     }
 
     void addAnimal(Animal animal) {
+        if (animals.contains(animal)) {
+            throw new IllegalArgumentException(String.format("There already is %s in the zoo!", animal));
+        }
         animals.add(animal);
     }
 

@@ -26,7 +26,7 @@ public class WordsRepository {
     /**
      * Real implementation returns list of all words.
      */
-    List<String> allWords() {
+    final List<String> allWords() {
         simulateLongLastingOperation();
         return Collections.emptyList();
     }

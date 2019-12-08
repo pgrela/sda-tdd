@@ -28,4 +28,9 @@ public class Animal {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return String.format("{%s %s weighting %d, saying '%s'}", species, name, weightInGrams, sound);
+    }
 }
